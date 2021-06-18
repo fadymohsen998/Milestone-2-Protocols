@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'AfterLogin.dart';
 import 'RegisterScreen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fadyyyy/Firestore.dart';
 
 
 
@@ -22,6 +23,7 @@ class _State extends State<LoginPage> {
   TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
 
 
   @override
@@ -96,6 +98,8 @@ class _State extends State<LoginPage> {
                               email: nameController.text.trim(),
                               password: passwordController.text.trim(),
                             );
+
+
 
                           },
                         )),

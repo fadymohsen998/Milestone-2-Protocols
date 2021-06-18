@@ -1,10 +1,12 @@
 
 
 import 'package:fadyyyy/screens/AddLocation.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fadyyyy/data/Locations.dart';
 import 'package:fadyyyy/models/locationClass.dart';
+import '../Firestore.dart';
 import 'DetailsScreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -14,6 +16,7 @@ class FavLocationsPage extends StatefulWidget {
   _FavLocationsPageState createState() => _FavLocationsPageState();
   static BuildContext context;
   static List<Location> locations = ( locationsAll()).listobj;
+  static String uid;
 }
 
 class _FavLocationsPageState extends State<FavLocationsPage> {
@@ -21,13 +24,36 @@ class _FavLocationsPageState extends State<FavLocationsPage> {
 
   // ignore: non_constant_identifier_names
   List<Location> PopularLocations = FavLocationsPage.locations;
+
+
+
+
+  @override
+ // void initState() {
+   // super.initState();
+    //fetchDatabaseList();
+  //}
+
+
+  //fetchDatabaseList() async {
+    //dynamic resultant = await DatabaseManager().getLocations();
+
+    //if (resultant == null) {
+      //print('Unable to retrieve');
+    //} else {
+      //setState(() {
+        //LocationList = resultant;
+      //});
+    //}
+  //}
   // @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
+
+         floatingActionButton: FloatingActionButton(
           tooltip: 'Adding',
           onPressed: () {
             Navigator.push(

@@ -1,5 +1,6 @@
 
 import 'package:fadyyyy/main.dart';
+import 'package:fadyyyy/screens/LoginPage.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -33,18 +34,7 @@ class AfterRegister extends StatelessWidget {
               ),
 
             ),
-            RaisedButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => FavLocationsPage()));
-                },
-                child: Text(
-                  'Go To Locations',
 
-                )
-
-            ),
 
             RaisedButton(
 
