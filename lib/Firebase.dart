@@ -31,7 +31,8 @@ class AuthService{
       User user =result.user;
       await DatabaseManager.LocationsRef.doc(user.uid).collection('Locations').get().then((querySnapshot) {
 
-        querySnapshot.docs.forEach((element) {FavouriteLocations.add(Location(theme:element.get('theme'),
+        querySnapshot.docs.forEach((element) {FavouriteLocations.add(Location(
+            theme:element.get('theme'),
             name: element.get('name'),
             description: element.get('description'),
             imageUrl: element.get('imageUrl'),

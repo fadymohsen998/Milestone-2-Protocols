@@ -13,26 +13,12 @@ class DatabaseManager {
         .set({'name': name, 'description': description, 'theme': theme, 'imageUrl': imageUrl, 'locationUrl': locationUrl});
   }
 
-  Future updateUserList(String name, String description, String theme, String imageUrl, String locationUrl, String AddedLocation) async {
-    return await LocationsRef.doc(AddedLocation).update({
+  Future updateUserList(String name, String description, String theme, String imageUrl, String locationUrl, ) async {
+    return await LocationsRef.doc().update({
       'name': name, 'description': description, 'theme': theme, 'imageUrl': imageUrl, 'locationUrl': locationUrl
     });
   }
 
-  Future getLocations() async {
-    List itemsList = [];
 
-    try {
-      await LocationsRef.get().then((querySnapshot) {
-        querySnapshot.docs.forEach((element) {
-          itemsList.add(element.data);
-        });
-      });
-      return itemsList;
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
 
 }
