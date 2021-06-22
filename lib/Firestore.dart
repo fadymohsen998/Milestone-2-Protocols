@@ -6,10 +6,10 @@ class DatabaseManager {
   static CollectionReference LocationsRef =
   FirebaseFirestore.instance.collection('Locations');
 
-  Future<void> createUserData(
-      String name, String description, String theme, String imageUrl, String locationUrl, String AddedLocation) async {
+  static Future<void> createUserData(
+      String name, String description, String theme, String imageUrl, String locationUrl, ) async {
     return await LocationsRef
-        .doc(AddedLocation)
+        .doc()
         .set({'name': name, 'description': description, 'theme': theme, 'imageUrl': imageUrl, 'locationUrl': locationUrl});
   }
 
@@ -34,17 +34,5 @@ class DatabaseManager {
       return null;
     }
   }
-   static Future UpdateData(List<Location> locations, String ID) async{
-    for(int i =0;i<locations.length;i++){
-      await LocationsRef.doc(ID).collection('Locations').doc(i.toString()).set(
-          { 'name': locations[i].name,
-            'description':locations[i].description
-            ,  'theme': locations[i].theme,
-            'imageUrl':locations[i].imageUrl,
 
-            'locationUrl':locations[i].locationUrl
-          });
-    }
-    return null;
-  }
 }

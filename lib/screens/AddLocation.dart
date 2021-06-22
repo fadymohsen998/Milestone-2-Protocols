@@ -1,6 +1,8 @@
-import 'dart:core';
+//import 'dart:core';
 
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fadyyyy/Firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fadyyyy/models/locationClass.dart';
@@ -129,6 +131,16 @@ class _AddLocationState extends State<AddLocation> {
 
                     Add();
                     FavLocationsPage.locations.add(AddedLocation);
+                    /*FirebaseFirestore.instance.collection("Locations").add({
+                      'name': name,
+                      'theme' : theme,
+                      'description' : description,
+                      'imageUrl' : image,
+                      'locationUrl' : location,
+
+                    });*/
+                    await DatabaseManager.createUserData(name,  description,  theme,  image, location, );
+
 
                   },
 

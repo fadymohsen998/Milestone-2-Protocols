@@ -29,7 +29,7 @@ class AuthService{
       List<Location> FavouriteLocations=[];
       UserCredential  result= await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
       User user =result.user;
-      CollectionReference Loc= await DatabaseManager.LocationsRef.doc(user.uid).collection('Locations').get().then((querySnapshot) {
+      await DatabaseManager.LocationsRef.doc(user.uid).collection('Locations').get().then((querySnapshot) {
 
         querySnapshot.docs.forEach((element) {FavouriteLocations.add(Location(theme:element.get('theme'),
             name: element.get('name'),
@@ -55,7 +55,7 @@ class AuthService{
       User user =result.user;
       List<Location> locations= locationsAll().listobj;
       FavLocationsPage.locations=locations;
-      await DatabaseManager.UpdateData(locations,user.uid);
+      //await DatabaseManager.UpdateData(locations,user.uid);
       //return "Signed Up";
 
     }on FirebaseAuthException catch(e){
